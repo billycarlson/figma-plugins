@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>iHerb Product Card Generator</title>
+</head>
+<body>
+  <h2>iHerb Product Card Generator</h2>
+
+  <label for="category">Select Category:</label>
+  <select id="category">
+    <option value="random">All Categories (Random)</option>
+    <option value="Supplements">Supplements</option>
+    <option value="Sports">Sports</option>
+    <option value="Bath & Personal Care">Bath & Personal Care</option>
+    <option value="Beauty">Beauty</option>
+    <option value="Healthy Home">Healthy Home</option>
+    <option value="Baby & Kids">Baby & Kids</option>
+  </select>
+
+  <br /><br />
+  <button id="fill">Fill Selected</button>
+  <button id="generate">Generate 10</button>
+
+  <script>
+    document.getElementById('fill').onclick = () => {
+      const category = document.getElementById('category').value;
+      parent.postMessage({ pluginMessage: { type: 'fill', category } }, '*');
+    };
+
+    document.getElementById('generate').onclick = () => {
+      const category = document.getElementById('category').value;
+      parent.postMessage({ pluginMessage: { type: 'generate', category } }, '*');
+    };
+  </script>
+</body>
+</html>
